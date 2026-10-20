@@ -1,16 +1,13 @@
 //your JS code here. If required.
 const codes = document.querySelectorAll('.code');
 
-codes[0].focus();
-
 codes.forEach((code, index) => {
-  code.addEventListener('input', (e) => {
-    if (!/^\d$/.test(e.target.value)) {
-      e.target.value = '';
-      return;
+  code.addEventListener('input', () => {
+    if (code.value.length > 1) {
+      code.value = code.value.slice(0, 1);
     }
 
-    if (index < codes.length - 1) {
+    if (code.value !== '' && index < codes.length - 1) {
       codes[index + 1].focus();
     }
   });
